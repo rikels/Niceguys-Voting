@@ -1,0 +1,47 @@
+#Config file for NiceGuysVoting
+#Uncommenting means removing the #-character in front of a line
+#You can also place comments after an option, if you want to use a # in an option, be sure to escape it by placing a \ in front of it
+#Example: trending topic \#Trendinggg
+
+##Twitch_username, uncomment these if you want to use your own account to connect to Twitch,
+##By default the script uses an anonymous user, unnoticable by anyone.
+##At the moment this does not have any added value, might have in the future.
+#Twitch_username = NiceGuy
+#Twitch_oauth = oauth:
+
+##If you want to always join a particular chat you can uncomment this and fil it in
+#Twitch_channel = rikels
+
+##If you want to use a different path to store the votes, uncomment this line and place the full path to the correct location.
+#vote_file_path = C:\users\rikels\votes.txt
+
+##Do you want to allow users to change their votes?
+allow_vote_changing = True
+
+#Do you want timed voting to be default?
+timed_voting_default = False
+
+#Set another default timer for your votes (used when you use a timed vote)
+timer = 40
+
+#Set another default to add to the timer (used when you add extra time to the timer)
+add_to_timer = 10
+
+#With this parameter you can disable automatic updating, it only does this once a week, so not at every start.
+allow_automatic_updates = True
+#Set this parameter to 0 if it isn't able to update, if my domain ever changes, you can still use the latest version of the program. But I guess Twitch will change their shit faster than me :).
+#This parameter is used for the auto-update feature, if you want to force an "automated update" you can change this value to 0
+last_update = 14431890330
+
+#Use a custom key combination instead of the default (Win+F3, Win+F4, Win+F5)
+#Valid input:"f1,f2....f24" "enter" "up" "down" "left" "right" "backspace" "delete" "end" "home" "tab" "pageup" "pagedown" "escape" "left mouse" "right mouse" "control break" "middle mouse" "clear" "shift" "ctrl" "menu" "pause" "caps" "space" "end" "home" "print screen" "insert" "delete" "windows" "left windows" "right windows" "num0,num1...num9" "*" "+" "-" "/" "numlock" "scroll lock" "left shift" "right shift" "left ctrl" "right ctrl" "left menu" "right menu" "mouse wheel" "media mute" "media vol down" "media vol up" "media next" "media prev" "media play" "prev page" "next page"
+#I don't know all the valid combinations, try for yourself, sadly I don't know how I can make the hotkey listner better.
+
+#Seperate keys with a comma","
+#The module that I use to listen for hotkeys only listens to 1 key and 1 modifier, the order also matters, first a key than a modifier
+#key_combination_reset_votes = f3,windows
+#key_combination_reset_timed_votes = f4,windows
+#key_combination_add_to_timer = f5,windows
+
+
+#future plans, custom output layout
