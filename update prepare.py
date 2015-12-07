@@ -13,6 +13,14 @@ import os
 md5s = {}
 exclude_list = ["votes.txt","config.txt"]
 
+#firstly create the version file, so it will also be included in the hashes
+#Tought that this version format would be quite nice, you'll know when the version they use was made.
+#this makes it easy to tell if a version they use is old, or quite new.
+#It is also easy to compare via scripting/programming language, as it is just a float.
+version_number = time.strftime("%Y%m%d.%H%M%S", time.gmtime())
+with open("build/exe.win-amd64-3.3/version","w") as version_file:
+	version_file.write(version_number)
+
 files = os.listdir("build/exe.win-amd64-3.3/")
 #calculating the hash value of all the files
 for filee in files:
@@ -29,12 +37,6 @@ for md5 in md5s:
 with open("build/exe.win-amd64-3.3/hashes","w") as hashfile:
 	hashfile.write(formatt)
 
-#Tought that this version format would be quite nice, you'll know when the version they use was made.
-#this makes it easy to tell if a version they use is old, or quite new.
-#It is also easy to compare via scripting/programming language, as it is just a float.
-version_number = time.strftime("%Y%m%d.%H%M%S", time.gmtime())
 
-with open("build/exe.win-amd64-3.3/version","w") as version_file:
-	version_file.write(version_number)
 
 print("successfully ran Update prepare!")

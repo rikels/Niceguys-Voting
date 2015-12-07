@@ -41,7 +41,8 @@ options = {
 executables = [
     Executable(	script='Lekker_Voten.py',
 				compress=True,
-				icon='lekker_voten.ico'),
+				icon='lekker_voten.ico',
+				targetName="Niceguys_Voting.exe"),
     #Executable('advanced_2.py')
 ]
 

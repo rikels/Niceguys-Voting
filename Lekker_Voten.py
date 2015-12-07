@@ -23,12 +23,18 @@ import sys
 
 # hotkeys is the script that listens for hotkeys (system wide, this means that it listens even if the script has lost focus)
 import hotkeys as listen_for_hotkeys
+
+config_path = os.path.dirname(os.path.abspath("__file__"))+"\\config.txt"
 	
 #function to update a line in the config file
 def update_config_value(file,option,value):
 	with open(file,"r") as config:
 		config_content = config.read()
-	new_config = re.sub("(.*){option}[ 	]*=.*(#.*)\n".format(option=option),"\g<1>{option} = {value} \g<2>\n".format(option=option,value=value),config_content)
+	#Kinda hacky, hope to change this in the future to make it less error prone
+	if re.search("(.*){option}[ 	]*=.*(#.*)\n".format(option=option),config_content):
+		new_config = re.sub("(.*){option}[ 	]*=.*(#.*)\n".format(option=option),"\g<1>{option} = {value} \g<2>\n".format(option=option,value=value),config_content)
+	elif re.search("(.*){option}[ 	]*=[ 	]*.*\n".format(option=option),config_content):
+		new_config = re.sub("(.*){option}[ 	]*=[ 	]*.*\n".format(option=option),"\g<1>{option} = {value}\n".format(option=option,value=value),config_content)
 	with open(file,"w") as config:
 		config.write(new_config)
 
@@ -256,7 +262,7 @@ def vote_with_time(users_voted,list_of_votes,valid_votes,vote,timer):
 
 
 
-if os.path.exists(os.path.dirname(os.path.abspath("__file__"))+"\\config.txt"):
+if os.path.exists(config_path):
 	config = parse_config(os.path.dirname(os.path.abspath("__file__"))+"\\config.txt")
 else:
 	print("The config file isn't found, did you rename/move it? (Or haven't I supplied it? contact me ;) )")
@@ -271,11 +277,12 @@ else:
 # Firstly checking if there is a newer version available, if the last time checked is more than a week ago and if automatic updates are enabled
 if "last_update" in config:
 	if config["last_update"] <= (time.time() - 604800) and allow_automatic_updates:
-		import nice_update
+		from nice_update import *
 		try:
 			update()
-			update_config_value(config,"last_update",time.time())
-		except:
+			update_config_value(config_path,"last_update",int(time.time()))
+		except Exception as error:
+			print(error)
 			print("something went wrong while updating, please manually download the latest version")
 
 # Generating the path to a file to store the votes, so it can be imported by OBS

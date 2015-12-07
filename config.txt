@@ -31,7 +31,7 @@ add_to_timer = 10
 allow_automatic_updates = True
 #Set this parameter to 0 if it isn't able to update, if my domain ever changes, you can still use the latest version of the program. But I guess Twitch will change their shit faster than me :).
 #This parameter is used for the auto-update feature, if you want to force an "automated update" you can change this value to 0
-last_update = 14431890330
+last_update = 0
 
 #Use a custom key combination instead of the default (Win+F3, Win+F4, Win+F5)
 #Valid input:"f1,f2....f24" "enter" "up" "down" "left" "right" "backspace" "delete" "end" "home" "tab" "pageup" "pagedown" "escape" "left mouse" "right mouse" "control break" "middle mouse" "clear" "shift" "ctrl" "menu" "pause" "caps" "space" "end" "home" "print screen" "insert" "delete" "windows" "left windows" "right windows" "num0,num1...num9" "*" "+" "-" "/" "numlock" "scroll lock" "left shift" "right shift" "left ctrl" "right ctrl" "left menu" "right menu" "mouse wheel" "media mute" "media vol down" "media vol up" "media next" "media prev" "media play" "prev page" "next page"
